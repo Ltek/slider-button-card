@@ -1,0 +1,75 @@
+=== SLIDER BUTTON CARD - CHANGELOG ===
+
+Version: Latest (Unreleased)
+Date: 2026-06-18
+
+== NEW FEATURES ==
+
+1. SLIDER VISUAL SETTINGS
+   - Added `always_show_track` option (boolean, default: false)
+     * Show slider track even when entity is Off or at 0
+   
+   - Added `track_background_color` option (string, default: '#2b374e')
+     * Set background color for non-filled track area
+     * Supports any valid CSS color or 'transparent' for full transparency
+   
+   - Added `track_size_percent` option (number, default: 100)
+     * Control slider track length as percentage (1-100%)
+     * Based on slider direction (horizontal or vertical)
+     * Example: 75% slider occupies first 75% of space, leaving 25% for buttons
+
+2. MULTIPLE ACTION BUTTONS SUPPORT
+   - Supports up to 5 action buttons per card
+   - Can configure as single object (backward compatible) or array of objects
+   - Each button can have independent configuration:
+     * mode: 'toggle' or 'custom'
+     * icon: Material Design Icons
+     * show: visibility toggle
+     * show_spinner: loading animation toggle
+     * tap_action: custom action configuration
+
+== MODIFIED FILES ==
+
+1. src/types.ts
+   - Updated SliderButtonCardConfig: action_button now supports ActionButtonConfig | ActionButtonConfig[]
+   - Updated SliderConfig interface:
+     * Added always_show_track?: boolean
+     * Added track_background_color?: string
+     * Added track_size_percent?: number
+   - Updated SliderConfigDefault with new defaults
+   - Updated SliderConfigDefaultDomain with new settings for all entity types
+
+2. src/slider-button-card.ts
+   - Added actionButtons array to store parsed button configurations
+   - Added setConfig logic to parse single button or array of buttons (max 5)
+   - Added renderActions() method for multiple button rendering
+   - Added renderSingleAction() method for individual button rendering
+   - Added shouldShowActions() method to determine visibility
+   - Updated render() to include track settings via CSS custom properties:
+     * --track-bg-color: for background color
+     * --track-size: for percentage sizing
+   - Added data attributes to slider element:
+     * data-always-show-track: for always showing track
+   - Updated CSS to support:
+     * clip-path for track size percentage
+     * Multiple action buttons layout with flexbox
+     * Track background color styling
+     * Always-show-track styling
+
+== TECHNICAL DETAILS ==
+
+CSS Implementation:
+- Uses clip-path for responsive track sizing
+- Supports all slider directions (left-right, top-bottom, bottom-top)
+- Track background color applied via CSS custom property
+- Multiple actions use flexbox for responsive layout
+- Maintains z-index layering for proper visual hierarchy
+
+Backward Compatibility:
+- Existing single action_button configurations continue to work
+- Defaults maintain original behavior
+- No breaking changes to existing configurations
+
+== BACKUP BRANCH ==
+Backup branch created: backup-before-visual-settings
+URL: https://github.com/Ltek/slider-button-card/tree/backup-before-visual-settings

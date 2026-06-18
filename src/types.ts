@@ -15,7 +15,7 @@ export interface SliderButtonCardConfig extends LovelaceCardConfig {
   show_name?: boolean;
   show_state?: boolean;
   icon?: IconConfig;
-  action_button?: ActionButtonConfig;
+  action_button?: ActionButtonConfig | ActionButtonConfig[];
   slider?: SliderConfig;
   theme?: string;
   debug?: boolean;
@@ -47,6 +47,9 @@ export interface SliderConfig {
   use_percentage_bg_opacity?: boolean;
   use_state_color?: boolean;
   show_track?: boolean;
+  always_show_track?: boolean;
+  track_background_color?: string;
+  track_size_percent?: number;
   toggle_on_click?: boolean;
   invert?: boolean;
   force_square: boolean;
@@ -106,6 +109,9 @@ export const SliderConfigDefault: SliderConfig = {
   use_percentage_bg_opacity: false,
   use_state_color: false,
   show_track: false,
+  always_show_track: false,
+  track_background_color: '#2b374e',
+  track_size_percent: 100,
   toggle_on_click: false,
   force_square: false,
 };
@@ -117,6 +123,9 @@ export const SliderConfigDefaultDomain: Map<string, SliderConfig> = new Map([
     use_state_color: true,
     use_percentage_bg_opacity: false,
     show_track: false,
+    always_show_track: false,
+    track_background_color: '#2b374e',
+    track_size_percent: 100,
     toggle_on_click: false,
     force_square: false,
   }],
@@ -126,6 +135,9 @@ export const SliderConfigDefaultDomain: Map<string, SliderConfig> = new Map([
     use_state_color: false,
     use_percentage_bg_opacity: false,
     show_track: false,
+    always_show_track: false,
+    track_background_color: '#2b374e',
+    track_size_percent: 100,
     toggle_on_click: false,
     force_square: false,
   }],
@@ -135,6 +147,9 @@ export const SliderConfigDefaultDomain: Map<string, SliderConfig> = new Map([
     use_state_color: false,
     use_percentage_bg_opacity: false,
     show_track: false,
+    always_show_track: false,
+    track_background_color: '#2b374e',
+    track_size_percent: 100,
     toggle_on_click: true,
     force_square: false,
   }],
@@ -145,6 +160,9 @@ export const SliderConfigDefaultDomain: Map<string, SliderConfig> = new Map([
     use_percentage_bg_opacity: false,
     toggle_on_click: false,
     show_track: false,
+    always_show_track: false,
+    track_background_color: '#2b374e',
+    track_size_percent: 100,
     force_square: false,
     invert: true,
   }],
@@ -154,6 +172,9 @@ export const SliderConfigDefaultDomain: Map<string, SliderConfig> = new Map([
     use_state_color: false,
     use_percentage_bg_opacity: false,
     show_track: false,
+    always_show_track: false,
+    track_background_color: '#2b374e',
+    track_size_percent: 100,
     toggle_on_click: true,
     force_square: false,
   }],
@@ -163,6 +184,9 @@ export const SliderConfigDefaultDomain: Map<string, SliderConfig> = new Map([
     use_state_color: false,
     use_percentage_bg_opacity: false,
     show_track: true,
+    always_show_track: false,
+    track_background_color: '#2b374e',
+    track_size_percent: 100,
     toggle_on_click: false,
     force_square: false,
   }],
@@ -172,6 +196,9 @@ export const SliderConfigDefaultDomain: Map<string, SliderConfig> = new Map([
     use_state_color: false,
     use_percentage_bg_opacity: false,
     show_track: false,
+    always_show_track: false,
+    track_background_color: '#2b374e',
+    track_size_percent: 100,
     toggle_on_click: true,
     force_square: false,
   }],
@@ -181,6 +208,9 @@ export const SliderConfigDefaultDomain: Map<string, SliderConfig> = new Map([
     use_state_color: false,
     use_percentage_bg_opacity: false,
     show_track: true,
+    always_show_track: false,
+    track_background_color: '#2b374e',
+    track_size_percent: 100,
     toggle_on_click: false,
     force_square: false,
   }],
